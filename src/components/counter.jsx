@@ -4,23 +4,44 @@ class Counter extends Component {
     //dynamic object that have attributes
     state  = {
         count: 0
+        //imageUrl: "https://picsum.photos/200" - randomly generated image
     };
+
+    /*
+    styles = {
+        fontSize: 50,
+        fontWeight: "bold"
+    };
+    */
+
+
     render() { 
         return (
             //React.Fragment - removes extra wrap of div in web browser (will get extra div wrap by using <div><\div> tab)
-        <React.Fragment> 
-            <span> {this.formatCount()} </span> 
-            <button>Increment</button>
-        </React.Fragment>
+        //<React.Fragment> 
+          //  <span> {this.formatCount()} </span> 
+            //<button>Increment</button>
+        //</React.Fragment>
         //this - current object; dynamic rendering
         //{} - can have any value - either hardcoded or function return
+
+
+        //<img src= {this.state.imageUrl} alt = ""/>  - dymanic rendering of image
+        /*<span style ={this.styles} className="badge badge-primary m-2"> {this.formatCount()} </span>  - from the function
+        <span style ={{fontSize: 30}} className="badge badge-primary m-2"> {this.formatCount()} </span>
+        */
+        <div>
+            <span style ={{fontSize: 30}} className="badge badge-primary m-2"> {this.formatCount()} </span> 
+            <button className="btn btn-secondary btn-sm">Increment</button>
+         </div>
+         
         
         );
     }
 
     formatCount(){
         const {count} = this.state; //destructure object -> peak the count property (picking it and storing in an another object called count)
-        return count == 0 ? <h1>Zero</h1> : count;
+        return count == 0 ? <h>Zero</h> : count;
         //jsx are normal javascript expression. can add headers instead of plain text too
     }
 }
