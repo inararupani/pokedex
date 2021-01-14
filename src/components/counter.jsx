@@ -16,27 +16,40 @@ class Counter extends Component {
 
 
     render() { 
+
+        //since we are modifying the variable we use let, else use const
+        //let classes = this.getBadgeClasses(); //appends to the className above
+
         return (
-            //React.Fragment - removes extra wrap of div in web browser (will get extra div wrap by using <div><\div> tab)
-        //<React.Fragment> 
-          //  <span> {this.formatCount()} </span> 
-            //<button>Increment</button>
-        //</React.Fragment>
-        //this - current object; dynamic rendering
-        //{} - can have any value - either hardcoded or function return
+            
+        /*React.Fragment - removes extra wrap of div in web browser (will get extra div wrap by using <div><\div> tab)
+        <React.Fragment> 
+            <span> {this.formatCount()} </span> 
+            <button>Increment</button>
+        </React.Fragment>
+        this - current object; dynamic rendering
+        {} - can have any value - either hardcoded or function return*/
 
-
-        //<img src= {this.state.imageUrl} alt = ""/>  - dymanic rendering of image
-        /*<span style ={this.styles} className="badge badge-primary m-2"> {this.formatCount()} </span>  - from the function
+        /*<img src= {this.state.imageUrl} alt = ""/>  - dymanic rendering of image
+        <span style ={this.styles} className="badge badge-primary m-2"> {this.formatCount()} </span>  - from the function
         <span style ={{fontSize: 30}} className="badge badge-primary m-2"> {this.formatCount()} </span>
         */
+
+    
+       //direct call to method
         <div>
-            <span style ={{fontSize: 30}} className="badge badge-primary m-2"> {this.formatCount()} </span> 
+            <span className={this.getBadgeClasses()}> {this.formatCount()} </span> 
             <button className="btn btn-secondary btn-sm">Increment</button>
          </div>
          
         
         );
+    }
+
+    getBadgeClasses() {
+        let classes = "badge m-2 badge-";
+        classes += (this.state.count === 0) ? "warning" : "primary"; //appends to the className above
+        return classes;
     }
 
     formatCount(){
