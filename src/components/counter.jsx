@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 class Counter extends Component {
     //dynamic object that have attributes
     state  = {
-        count: 0
+        count: 0,
         //imageUrl: "https://picsum.photos/200" - randomly generated image
+        tags: ['tag1','tag2','tag3'] 
     };
 
     /*
@@ -21,7 +22,7 @@ class Counter extends Component {
         //let classes = this.getBadgeClasses(); //appends to the className above
 
         return (
-            
+
         /*React.Fragment - removes extra wrap of div in web browser (will get extra div wrap by using <div><\div> tab)
         <React.Fragment> 
             <span> {this.formatCount()} </span> 
@@ -40,8 +41,12 @@ class Counter extends Component {
         <div>
             <span className={this.getBadgeClasses()}> {this.formatCount()} </span> 
             <button className="btn btn-secondary btn-sm">Increment</button>
+            <ul>
+                {this.state.tags.map(tag => <li key={tag}>{ tag }</li>)} 
+            </ul>
          </div>
-         
+         //getting a string(tags) and mapping it with jsx expression which compiled through React Element = Plain Js obj 
+         //Each attribute need a key attribute for it to be dyanamically changed
         
         );
     }
