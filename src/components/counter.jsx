@@ -5,7 +5,7 @@ class Counter extends Component {
     state  = {
         count: 0,
         //imageUrl: "https://picsum.photos/200" - randomly generated image
-        tags: [] 
+        //tags: [] 
     };
 
     /*
@@ -28,12 +28,14 @@ class Counter extends Component {
 
     //convert this to Arrow Function- Simpler version of constructor/ rebinding every event handler mannually
     handleIncrement = () => {
-        console.log('Increment Clicked!', this);
+        //console.log('Increment Clicked!', this);
         //When this is called in obj.method(); it will return a reference of function "method" to object "obj"
         //function() - without object/standalone - wobject will be undefined
+        this.setState({count: this.state.count+1}); //Updating the state, and syncs the DOM with Virtual DOM
     }
 
 
+    //Conditional Rendering
     renderTags() {
         if (this.state.tags.length === 0) return <p>There are no Tags!</p>;
 
