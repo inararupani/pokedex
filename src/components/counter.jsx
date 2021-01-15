@@ -5,7 +5,7 @@ class Counter extends Component {
     state  = {
         count: 0,
         //imageUrl: "https://picsum.photos/200" - randomly generated image
-        tags: ['tag1','tag2','tag3'] 
+        tags: [] 
     };
 
     /*
@@ -15,13 +15,22 @@ class Counter extends Component {
     };
     */
 
+    renderTags() {
+        if (this.state.tags.length === 0) return <p>There are no Tags!</p>;
+
+        return <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>;
+    }
 
     render() { 
 
+        return <div>
+        
+            {this.state.tags.length === 0 && "Please create a new tag"}
+                {this.renderTags()}
+            </div>;
+
         //since we are modifying the variable we use let, else use const
         //let classes = this.getBadgeClasses(); //appends to the className above
-
-        return (
 
         /*React.Fragment - removes extra wrap of div in web browser (will get extra div wrap by using <div><\div> tab)
         <React.Fragment> 
@@ -37,7 +46,7 @@ class Counter extends Component {
         */
 
     
-       //direct call to method
+       /*direct call to method
         <div>
             <span className={this.getBadgeClasses()}> {this.formatCount()} </span> 
             <button className="btn btn-secondary btn-sm">Increment</button>
@@ -46,12 +55,10 @@ class Counter extends Component {
             </ul>
          </div>
          //getting a string(tags) and mapping it with jsx expression which compiled through React Element = Plain Js obj 
-         //Each attribute need a key attribute for it to be dyanamically changed
-        
-        );
+         //Each attribute need a key attribute for it to be dyanamically changed*/
     }
 
-    getBadgeClasses() {
+    /*getBadgeClasses() {
         let classes = "badge m-2 badge-";
         classes += (this.state.count === 0) ? "warning" : "primary"; //appends to the className above
         return classes;
@@ -59,9 +66,9 @@ class Counter extends Component {
 
     formatCount(){
         const {count} = this.state; //destructure object -> peak the count property (picking it and storing in an another object called count)
-        return count == 0 ? <h>Zero</h> : count;
+        return count == 0 ? <h1>Zero</h1> : count;
         //jsx are normal javascript expression. can add headers instead of plain text too
-    }
+    }*/
 }
  
 export default Counter;
