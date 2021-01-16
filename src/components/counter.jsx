@@ -31,7 +31,7 @@ class Counter extends Component {
         //console.log('Increment Clicked!', this);
         //When this is called in obj.method(); it will return a reference of function "method" to object "obj"
         //function() - without object/standalone - wobject will be undefined
-        console.log(product)
+        console.log(product);
         this.setState({count: this.state.count+1}); //Updating the state, and syncs the DOM with Virtual DOM
     };
 
@@ -40,9 +40,9 @@ class Counter extends Component {
     //but is created as no arguments. Therefore we can use this fucntion in Onclick parameter
     //Not a good solution - cuz its clutter; instead use inline function
     
-    /*doHandleIncrement = () => {
+    doHandleIncrement = () => {
         this.handleIncrement({id: 1});
-    }*/
+    }
 
 
     //Conditional Rendering
@@ -60,13 +60,8 @@ class Counter extends Component {
         //and in paramenters dont hardcode
         <div>
             <span className={this.getBadgeClasses()}> {this.formatCount()} </span> 
-            <button 
-            onClick = {() => this.handleIncrement(product)}
-            className="btn btn-secondary btn-sm"
-            >
-                Increment
-            </button>
-         </div>
+            <button onClick = {this.doHandleIncrement} className = "btn btn-secondary btn-sm">Increment</button>
+        </div>
          //getting a string(tags) and mapping it with jsx expression which compiled through React Element = Plain Js obj 
          //Each attribute need a key attribute for it to be dyanamically changed*/
 
@@ -96,7 +91,7 @@ class Counter extends Component {
 
     formatCount(){
         const {count} = this.state; //destructure object -> peak the count property (picking it and storing in an another object called count)
-        return count == 0 ? <h1>Zero</h1> : count;
+        return count === 0 ? <h1>Zero</h1> : count;
         //jsx are normal javascript expression. can add headers instead of plain text too
     }
 }
