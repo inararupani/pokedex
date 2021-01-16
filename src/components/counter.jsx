@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class Counter extends Component {
     //dynamic object that have attributes
     state  = {
-        count: 0,
+        //count prints out the deafult value set by computer
+        count: this.props.value
         //imageUrl: "https://picsum.photos/200" - randomly generated image
         //tags: [] 
     };
@@ -53,6 +54,8 @@ class Counter extends Component {
     }
 
     render() { 
+        //console.log('props', this.props);
+        //props - js componment: they have the attribites of counter componnets
 
         return (
         //direct call to method
