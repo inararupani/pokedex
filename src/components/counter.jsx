@@ -27,12 +27,22 @@ class Counter extends Component {
     }*/
 
     //convert this to Arrow Function- Simpler version of constructor/ rebinding every event handler mannually
-    handleIncrement = () => {
+    handleIncrement = (product) => {
         //console.log('Increment Clicked!', this);
         //When this is called in obj.method(); it will return a reference of function "method" to object "obj"
         //function() - without object/standalone - wobject will be undefined
+        console.log(product)
         this.setState({count: this.state.count+1}); //Updating the state, and syncs the DOM with Virtual DOM
-    }
+    };
+
+    //so we can pass an argyment in the HandleIncremnent
+    //when we call a function, we cant pass an argument so we create an extra function that wrapps to the original function with argument 
+    //but is created as no arguments. Therefore we can use this fucntion in Onclick parameter
+    //Not a good solution - cuz its clutter; instead use inline function
+    
+    /*doHandleIncrement = () => {
+        this.handleIncrement({id: 1});
+    }*/
 
 
     //Conditional Rendering
@@ -46,9 +56,16 @@ class Counter extends Component {
 
         return (
         //direct call to method
+        //onClick = {() => this.handleIncrement(product)} - to pass an argument/ eventHandler use Arrow function in the body of that function
+        //and in paramenters dont hardcode
         <div>
             <span className={this.getBadgeClasses()}> {this.formatCount()} </span> 
-            <button onClick = {this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
+            <button 
+            onClick = {() => this.handleIncrement(product)}
+            className="btn btn-secondary btn-sm"
+            >
+                Increment
+            </button>
          </div>
          //getting a string(tags) and mapping it with jsx expression which compiled through React Element = Plain Js obj 
          //Each attribute need a key attribute for it to be dyanamically changed*/
@@ -68,7 +85,7 @@ class Counter extends Component {
         <span style ={this.styles} className="badge badge-primary m-2"> {this.formatCount()} </span>  - from the function
         <span style ={{fontSize: 30}} className="badge badge-primary m-2"> {this.formatCount()} </span>
         */
-        )
+        );
     }
 
     getBadgeClasses() {
