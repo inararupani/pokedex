@@ -4,9 +4,14 @@ class Counter extends Component {
     //dynamic object that have attributes
     state  = {
         //count prints out the deafult value set by computer
-        count: this.props.value
+        count: this.props.counter.value
         //imageUrl: "https://picsum.photos/200" - randomly generated image
         //tags: [] 
+
+        /* Difference Btw Props VS State
+        props: Includes data we give to a component. Read Only
+        State: Includes data that is local or private. Other components cannot access that state. Completely Internal
+        */
     };
 
     /*
@@ -32,7 +37,7 @@ class Counter extends Component {
         //console.log('Increment Clicked!', this);
         //When this is called in obj.method(); it will return a reference of function "method" to object "obj"
         //function() - without object/standalone - wobject will be undefined
-        console.log(product);
+        //console.log(product);
         this.setState({count: this.state.count+1}); //Updating the state, and syncs the DOM with Virtual DOM
     };
 
@@ -56,6 +61,7 @@ class Counter extends Component {
     render() { 
         //console.log('props', this.props);
         //props - js componment: they have the attribites of counter componnets
+        console.log(this.props);
 
         return (
         //direct call to method
@@ -64,6 +70,7 @@ class Counter extends Component {
         <div>
             <span className={this.getBadgeClasses()}> {this.formatCount()} </span> 
             <button onClick = {this.doHandleIncrement} className = "btn btn-secondary btn-sm">Increment</button>
+            <button onClick = {() => this.props.onDelete(this.props.counter.id)} className= "btn btn-danger btn-small m-2">Delete</button>
         </div>
          //getting a string(tags) and mapping it with jsx expression which compiled through React Element = Plain Js obj 
          //Each attribute need a key attribute for it to be dyanamically changed*/
