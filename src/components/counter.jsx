@@ -1,6 +1,24 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
+
+    componentDidUpdate (prevProps, prevState) {
+        console.log('prevProps',prevProps);
+        console.log('prevState',prevState);
+        //if (prevProps.counter.value ! == this.props.counter.value) {
+            //AJAx call and get new data from server
+            //if no data is changed we dont want to do it
+
+            //ajax calls based on the props and state object
+        //}
+    }
+
+    //called before unmounting a component - helps will cleanup (listeners)
+    //helps eliminating memory leaks
+    componentWillUnmount () {
+        console.log('Counter - Unmount');
+    }
+
     //dynamic object that have attributes
     //state  = {
         //count prints out the deafult value set by computer
@@ -62,6 +80,8 @@ class Counter extends Component {
         //console.log('props', this.props);
         //props - js componment: they have the attribites of counter componnets
         //console.log(this.props);
+
+        console.log('counter - rendered');
 
         return (
         //direct call to method

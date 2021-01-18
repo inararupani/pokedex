@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 /*
     Stateless functional Component (sfc): instead of using props, states, and classes. We use functions
@@ -6,14 +6,15 @@ import React, { Component } from 'react';
     have to add "props" as a paramter in the function, React will add props element at RunTime.
 */
 
-const NavBar = (props) => {
+const NavBar = ({totalCounters}) => {
+    console.log('navbar - rendered');
 
     return ( 
     <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand">
           Navbar {" "} <span className="badge badge-pill badge-secondary">
-              {props.totalCounters}</span>
+              {totalCounters}</span>
           </a>
         </div>
       </nav> 

@@ -15,6 +15,25 @@ class App extends Component {
     ]
 };
 
+//Good use to initialize the charateristics of that instance. 
+//Set the state base on the props recieved from the outside
+//Only called once
+constructor() {
+  super();
+  console.log('App - Constructor');
+  //this.state=this.props.something; // this is how we set State in constructor
+  //this.setState() - only be called, when a component is rendered and placed in the DOM
+}
+
+//After our component is rendered in the DOM
+//perfect place to make AJAX calls from the server
+componentDidMount () {
+  //ajax call
+  //this.setState({movies})
+  //is in the DOM - happens after rendering
+  console.log('App - Mounted');
+}
+
 handleIncrement = (counter) => {
     //React updating the state -- clonning the array
     const counters = [...this.state.counters];
@@ -46,6 +65,9 @@ handleDelete = (counterId) => {
 
 
 render () {
+
+  console.log('App - Rendered'); //when rendered, all its children are rendered recursively
+
   return (
     <React.Fragment>
       <NavBar totalCounters = {this.state.counters.filter(c => c.value > 0).length}/>
